@@ -1,6 +1,7 @@
 import React,{useState} from 'react';   
 import { Text, View,TextInput, TouchableOpacity } from 'react-native';
 import styles from './style.js';
+import flightsdata from './Flights.json';
 
 const Search = (props)=>{
 
@@ -43,10 +44,26 @@ const Search = (props)=>{
                         placeholderTextColor='grey'       
                     />
             
-             <TouchableOpacity style={styles.submitButton} onPress={()=>props.navigation.navigate('FlightResult',{Date,source,destination,passengers})}>
+             <TouchableOpacity style={styles.submitButton} onPress={()=>props.navigation.navigate('FlightResult',{plane:searchFlight(Date,source,destination,passengers)})}>
                  <Text>Submit</Text>
              </TouchableOpacity>
         </View>
     );
+};
+const searchFlight = (Date,Source,Destination,Passengers) =>{
+    try{
+              let sourceFlights = flightsdata.filter(
+                                         (flight => (flight.source === Source)&&
+                                        (flight.date === Date)&&
+                                        (flight.destination === Destination)&&
+                                        (flight.seats >= Passengers)))  
+                                        return (sourceFlights)
+              }
+catch(error){
+    props.navigation.navigate('Home');
+    alert("Enter Valid Details")
+}
+  
+ return []    
 };
 export default Search;
