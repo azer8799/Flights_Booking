@@ -4,4 +4,6 @@ Clone the Repository
 
 Cd to current directory
 
-Run npm start
+npm install
+
+npm start
