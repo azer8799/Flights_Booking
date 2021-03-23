@@ -6,9 +6,7 @@ const Book =(props)=>{
    
     const People=props.navigation.getParam('Passengers', 'no-passengers');
     const Cost=props.navigation.getParam('cost', 'no-cost');
-    // const Costd=props.navigation.getParam('costd', 'no-costd');
-    
-    // console.log(People);
+   
   
         return(
             <View style={styles.container}>
